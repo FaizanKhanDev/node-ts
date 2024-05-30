@@ -5,6 +5,14 @@
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
+      "allowImportingTsExtensions": true,
+      "noEmit": true,
+      "allowJs": true,
+      "rootDir": "./src",
+      "baseUrl": "./src",
+      "paths": {
+        "@/*": ["src/*"]
+      },
       "forceConsistentCasingInFileNames": true,
       "outDir": "./dist"
     },
