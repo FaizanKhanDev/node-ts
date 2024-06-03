@@ -2,7 +2,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import  connectDB  from './configs/db';
-import upload from 'middlewares/upload-middlware';
+import upload from './middlewares/upload-middlware';
 
 
 /* ====== Config ====== */
@@ -32,7 +32,6 @@ app.get('/', (req, res) => {
 
 
 app.post('/upload', upload.single('file'), (req, res) => {
-  console.log("req.file", req.file);
   res.send('File uploaded successfully!');
 });
 
