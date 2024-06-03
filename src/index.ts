@@ -1,28 +1,40 @@
+/* ====== TypeScript with Express ====== */
 import express from 'express';
 import dotenv from 'dotenv';
 import  connectDB  from './configs/db';
-
-/* ====== TypeScript with Express ====== */
+import upload from 'middlewares/upload-middlware';
 
 
 /* ====== Config ====== */
 dotenv.config();
+
+
 /* ==== Server Setup ==== */
 const app = express();
 
 
 
-/* ====== Database Connection ====== */
+/* ====== Database URL ====== */
 const DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost:27017';
+
+/* ====== Database Connection ====== */
 connectDB(DATABASE_URL);
 
 /* ====== PORT ====== */
 const PORT = process.env.PORT || 8000;
 
+
+
+/* ====== Routes ====== */
 app.get('/', (req, res) => {
   res.send('Hello, TypeScript with Express!');
 });
 
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  console.log("req.file", req.file);
+  res.send('File uploaded successfully!');
+});
 
 
 
