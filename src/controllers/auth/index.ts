@@ -29,6 +29,7 @@ class AuthController {
             /* ===== Check if email is valid ===== */
             const checkEmailIsValid: boolean = validator.isEmail(email);
             if (checkEmailIsValid) {
+                
                 /* ====== Check email is in SMTP server ====== */
                 await emailExistence.check(req.body.email, async (error: any, response: any) => {
                     console.log("emailExistence response: ", response);
